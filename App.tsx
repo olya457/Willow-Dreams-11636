@@ -1,45 +1,52 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React, { useCallback, useState } from 'react';
+import { ActivityIndicator, StatusBar, Text } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { AppProvider, useAppData } from './src/storage/AppProvider';
+import { AppNavigator } from './src/navigation/AppNavigator';
+import { SplashScreen } from './src/screens/SplashScreen';
+import { Screen } from './src/components/Screen';
+import { GradientText } from './src/components/GradientText';
+import { Button } from './src/components/Button';
+import { MotionProvider } from './src/hooks/useMotionPreference';
+import { colors, layout } from './src/theme/theme';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
-
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
+function AppContent() {
+  const [splashDone, setSplashDone] = useState(false);
+  const { ready, error, retry } = useAppData();
+  const finishSplash = useCallback(() => setSplashDone(true), []);
+  if (!splashDone) {
+    return <SplashScreen onFinish={finishSplash} />;
+  }
+  if (error) {
+    return (
+      <Screen bottom>
+        <GradientText>Unable to load your data</GradientText>
+        <Text style={layout.body}>{error}</Text>
+        <Button title="Try again" onPress={retry} />
+      </Screen>
+    );
+  }
+  if (!ready) {
+    return (
+      <Screen>
+        <ActivityIndicator
+          color={colors.gold}
+          accessibilityLabel="Loading saved data"
+        />
+      </Screen>
+    );
+  }
+  return <AppNavigator />;
+}
+export default function App() {
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
+      <StatusBar barStyle="light-content" />
+      <AppProvider>
+        <MotionProvider>
+          <AppContent />
+        </MotionProvider>
+      </AppProvider>
     </SafeAreaProvider>
   );
 }
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
-
-export default App;

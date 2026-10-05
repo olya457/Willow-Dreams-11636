@@ -1,97 +1,49 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Willow Dreams
 
-# Getting Started
+React Native + TypeScript app based on the supplied Willow Dreams screens and Figma content. All artwork is bundled in `src/assets`; the app does not fetch remote images. Fraunces and Instrument Sans are bundled locally from the Figma document.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
-
-## Step 1: Start Metro
-
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
-
-To start the Metro dev server, run the following command from the root of your React Native project:
+## Run
 
 ```sh
-# Using npm
-npm start
-
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+npm install
 npm run ios
-
-# OR using Yarn
-yarn ios
+npm run android
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+For a fresh iOS checkout, install CocoaPods dependencies in `ios` before running. The included `Gemfile.lock` requires a compatible Ruby and Bundler installation. A configured Android SDK and JDK 17 are required for Android.
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```sh
+npm run typecheck
+npm run lint
+npm test -- --runInBand
+```
 
-## Step 3: Modify your app
+## Structure
 
-Now that you have successfully run the app, let's make changes!
+- `src/navigation`: React Navigation tabs and native stacks.
+- `src/screens`: onboarding, articles, techniques, projects, questionnaire, tools and gallery.
+- `src/components`: reusable buttons, gradient headings, cards, inputs and dialogs.
+- `src/data`: the Figma articles, techniques, illustrated projects and onboarding copy.
+- `src/storage`: versioned AsyncStorage data, hydration and serialized writes.
+- `src/services`: local notifications, photo imports and system sharing.
+- `src/utils`: material estimates, timer calculations, dates and project matching.
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+## Behavior
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+The launch screen displays the local background and logo with a four-second WebView animation. Onboarding is shown on first launch. Favorites, article answers, quiz results, gallery entries and timer state persist locally. Gallery photos are copied into the app’s documents directory, independent of the photo picker cache. User collections start empty.
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+The soaking timer stores an absolute deadline, survives restarts, supports pause and reset, and requests notification permission when first started. If notification permission is declined, the countdown still works and the app explains that background alerts are unavailable. Notification delivery is managed by the operating system.
 
-## Congratulations! :tada:
+Small screens use scrollable content, safe-area insets, keyboard avoidance and a persistent six-tab navigation bar. No status bars or home indicators are baked into screen images.
 
-You've successfully run and modified your React Native App. :partying_face:
+## Design decisions
 
-### Now what?
+Source: https://www.figma.com/design/xOqgFvjcRCMg4BGDKJ6rQO/Willow-Dreams
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+The Figma text specification names the first projects “Willow Coaster” and “Mini Woven Star”; some screenshots show older labels. The implementation follows the text specification and matching asset filenames.
 
-# Troubleshooting
+Only the first questionnaire question is supplied in the screens. Questions about time, project type and challenge, plus the deterministic matching rules, implement the four criteria described in the Figma readme. Project duration metadata is used for recommendations and is an estimate.
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+The supplied material-calculator example is Basket / Medium = 64 rods. Other values are planning estimates, not exact measurements. The supplied soaking example is Medium / Dried = 6 hours; other presets are starting points. The interface asks users to check rod flexibility.
 
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+The application is offline and has no account, server or cloud synchronization. Uninstalling the application removes its locally stored data.
