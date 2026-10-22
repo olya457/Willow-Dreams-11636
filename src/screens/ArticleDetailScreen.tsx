@@ -108,7 +108,7 @@ export function ArticleDetailScreen({
 }
 const styles = StyleSheet.create({
   back: { alignSelf: 'flex-start', minHeight: 36, justifyContent: 'center' },
-  backText: { fontFamily: fonts.body, fontSize: 15, color: colors.gold },
+  backText: { fontFamily: fonts.body, fontSize: 15, color: colors.accent },
   image: { width: '100%', height: undefined, aspectRatio: 2 },
   answer: {
     flex: 1,

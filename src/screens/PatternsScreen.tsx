@@ -21,7 +21,7 @@ export function PatternsScreen() {
           }
           style={styles.arrow}
         >
-          <Icon name="left" color={colors.gold} size={20} />
+          <Icon name="left" color={colors.accent} size={20} />
         </Pressable>
         <Image
           accessibilityLabel={pattern.title}
@@ -35,7 +35,7 @@ export function PatternsScreen() {
           onPress={() => setIndex((index + 1) % patterns.length)}
           style={styles.arrow}
         >
-          <Icon name="right" color={colors.gold} size={20} />
+          <Icon name="right" color={colors.accent} size={20} />
         </Pressable>
       </View>
       <View style={styles.description} accessibilityLiveRegion="polite">

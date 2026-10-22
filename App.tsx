@@ -30,7 +30,7 @@ function AppContent() {
     return (
       <Screen>
         <ActivityIndicator
-          color={colors.gold}
+          color={colors.accent}
           accessibilityLabel="Loading saved data"
         />
       </Screen>

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Animated, Easing, StyleSheet, Text, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useReducedMotion } from '../hooks/useMotionPreference';
-import { colors, fonts, goldGradient } from '../theme/theme';
+import { colors, fonts, accentGradient } from '../theme/theme';
 
 export function Progress({
   step,
@@ -46,7 +46,7 @@ export function Progress({
           ]}
         >
           <LinearGradient
-            colors={goldGradient}
+            colors={accentGradient}
             style={StyleSheet.absoluteFill}
           />
         </Animated.View>
@@ -56,7 +56,7 @@ export function Progress({
 }
 const styles = StyleSheet.create({
   wrap: { gap: 10 },
-  label: { fontFamily: fonts.body, color: colors.gold, fontSize: 14 },
+  label: { fontFamily: fonts.body, color: colors.accent, fontSize: 14 },
   track: { height: 4, backgroundColor: colors.surface },
   progress: { height: 4 },
 });

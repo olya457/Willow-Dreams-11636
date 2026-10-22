@@ -11,7 +11,7 @@ export async function shareContent(item: Article | Project) {
   try {
     await Share.share({
       title: item.title,
-      message: `${item.title}\nWillow Dreams\n\n${body}`,
+      message: `${item.title}\nWillow Craft Studio\n\n${body}`,
     });
   } catch {
     Alert.alert('Unable to share', 'Please try again.');

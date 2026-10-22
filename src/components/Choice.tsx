@@ -46,10 +46,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     gap: 12,
   },
-  selected: { borderColor: colors.gold },
+  selected: { borderColor: colors.accent },
   pressed: { opacity: 0.8 },
   text: { fontFamily: fonts.body, fontSize: 16, color: colors.text, flex: 1 },
-  gold: { color: colors.gold },
+  gold: { color: colors.accent },
   radio: {
     width: 15,
     height: 15,
@@ -57,5 +57,5 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.border,
   },
-  checked: { backgroundColor: colors.gold, borderColor: colors.gold },
+  checked: { backgroundColor: colors.accent, borderColor: colors.accent },
 });

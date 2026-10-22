@@ -8,7 +8,7 @@ import {
   type ViewStyle,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { colors, fonts, goldGradient } from '../theme/theme';
+import { colors, fonts, accentGradient } from '../theme/theme';
 
 type Props = {
   title: string;
@@ -35,7 +35,7 @@ export function Button({
   const blocked = disabled || busy;
   const content = busy ? (
     <ActivityIndicator
-      color={variant === 'primary' ? colors.ink : colors.gold}
+      color={variant === 'primary' ? colors.ink : colors.accent}
     />
   ) : (
     <Text
@@ -69,7 +69,7 @@ export function Button({
     >
       {variant === 'primary' ? (
         <LinearGradient
-          colors={goldGradient}
+          colors={accentGradient}
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
           pointerEvents="none"
@@ -101,10 +101,10 @@ const styles = StyleSheet.create({
     flexShrink: 1,
   },
   dark: { color: colors.ink },
-  gold: { color: colors.gold },
+  gold: { color: colors.accent },
   danger: { color: colors.danger },
   secondary: { backgroundColor: colors.surface },
-  outline: { borderColor: colors.gold, borderWidth: 1 },
+  outline: { borderColor: colors.accent, borderWidth: 1 },
   disabled: { opacity: 0.45 },
   pressed: { opacity: 0.78 },
 });

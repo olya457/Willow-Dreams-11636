@@ -112,7 +112,7 @@ const navigationTheme = {
     ...DarkTheme.colors,
     background: colors.background,
     card: colors.background,
-    primary: colors.gold,
+    primary: colors.accent,
     text: colors.text,
     border: colors.divider,
   },

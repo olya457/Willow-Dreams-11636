@@ -44,12 +44,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderBottomColor: 'transparent',
   },
-  active: { borderBottomColor: colors.gold },
+  active: { borderBottomColor: colors.accent },
   label: {
     fontFamily: fonts.body,
     fontSize: 14,
     color: colors.text,
     textAlign: 'center',
   },
-  selected: { color: colors.gold },
+  selected: { color: colors.accent },
 });

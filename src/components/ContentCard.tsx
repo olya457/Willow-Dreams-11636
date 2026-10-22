@@ -71,6 +71,6 @@ const styles = StyleSheet.create({
   open: { gap: 12 },
   image: { width: '100%', height: undefined, aspectRatio: 2.5 },
   title: { fontSize: 18, lineHeight: 24 },
-  gold: { color: colors.gold },
+  gold: { color: colors.accent },
   end: { flex: 1, alignItems: 'flex-end' },
 });

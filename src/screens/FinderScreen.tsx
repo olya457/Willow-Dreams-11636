@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   resultImage: { width: '100%', height: undefined, aspectRatio: 1 },
-  gold: { color: colors.gold },
+  gold: { color: colors.accent },
   question: { marginTop: 12, fontSize: 27, lineHeight: 34 },
   choices: { gap: 8 },
 });

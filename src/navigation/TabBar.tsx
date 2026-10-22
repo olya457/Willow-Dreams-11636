@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Keyboard, Pressable, StyleSheet, View } from 'react-native';
+import { Keyboard, Pressable, StyleSheet } from 'react-native';
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Icon, type IconName } from '../components/Icon';
-import { colors } from '../theme/theme';
+import LinearGradient from 'react-native-linear-gradient';
+import { backgroundGradient, colors } from '../theme/theme';
 
 const icons: Record<string, IconName> = {
   Articles: 'articles',
@@ -40,7 +41,10 @@ export function TabBar({ state, navigation }: BottomTabBarProps) {
     return null;
   }
   return (
-    <View
+    <LinearGradient
+      colors={backgroundGradient}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
       style={[
         styles.bar,
         {
@@ -75,13 +79,13 @@ export function TabBar({ state, navigation }: BottomTabBarProps) {
           >
             <Icon
               name={icons[route.name]}
-              color={selected ? colors.gold : colors.text}
+              color={selected ? colors.accent : colors.text}
               size={22}
             />
           </Pressable>
         );
       })}
-    </View>
+    </LinearGradient>
   );
 }
 
@@ -105,5 +109,5 @@ const styles = StyleSheet.create({
     borderTopColor: 'transparent',
     marginTop: -1,
   },
-  active: { borderTopColor: colors.gold },
+  active: { borderTopColor: colors.accent },
 });

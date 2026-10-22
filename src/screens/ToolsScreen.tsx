@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
   },
   value: {
     fontFamily: fonts.heading,
-    color: colors.gold,
+    color: colors.accent,
     fontSize: 43,
     fontVariant: ['tabular-nums'],
   },

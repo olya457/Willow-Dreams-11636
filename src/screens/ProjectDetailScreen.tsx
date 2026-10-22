@@ -80,14 +80,14 @@ export function ProjectDetailScreen({ route, navigation }: Props) {
 }
 const styles = StyleSheet.create({
   back: { alignSelf: 'flex-start', minHeight: 36, justifyContent: 'center' },
-  backText: { fontFamily: fonts.body, fontSize: 15, color: colors.gold },
+  backText: { fontFamily: fonts.body, fontSize: 15, color: colors.accent },
   heading: { gap: 6 },
   image: { width: '100%', height: undefined, aspectRatio: 1 },
   number: {
     width: 25,
     height: 25,
     borderRadius: 14,
-    backgroundColor: colors.gold,
+    backgroundColor: colors.accent,
     alignItems: 'center',
     justifyContent: 'center',
   },

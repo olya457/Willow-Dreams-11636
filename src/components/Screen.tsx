@@ -11,7 +11,8 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Reveal } from './Reveal';
 import { useResponsiveLayout } from '../hooks/useResponsiveLayout';
-import { colors } from '../theme/theme';
+import LinearGradient from 'react-native-linear-gradient';
+import { backgroundGradient, colors } from '../theme/theme';
 
 export function Screen({
   children,
@@ -61,6 +62,13 @@ export function Screen({
         bottom ? ['top', 'left', 'right', 'bottom'] : ['top', 'left', 'right']
       }
     >
+      <LinearGradient
+        colors={backgroundGradient}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={StyleSheet.absoluteFill}
+        pointerEvents="none"
+      />
       <KeyboardAvoidingView
         style={styles.fill}
         enabled={keyboard}
