@@ -1,4 +1,4 @@
-package com.willowdreams
+package com.willow.dreams
 
 import android.app.Application
 import com.facebook.react.PackageList

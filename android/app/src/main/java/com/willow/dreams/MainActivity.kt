@@ -1,4 +1,4 @@
-package com.willowdreams
+package com.willow.dreams
 
 import android.os.Bundle
 import com.facebook.react.ReactActivity
